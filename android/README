@@ -1,0 +1,13 @@
+Appcelerator iPhone Flurry module
+============================================
+
+Blog with more info: http://www.softgravity.com/articles/blog/7-appcelerator-flurry-module-for-iphone-ipad-and-android
+
+Examples in the example directory
+API reference in the documentation directory
+
+The module is already compiled. Extract the dist/sg.flurry-android-1.0.zip file.
+
+
+This module is Copyright (c) 2011 by Soft Gravity. All Rights Reserved. The MIT License (MIT)
+Flurry is Copyright(c) 2011 by Flurry, Inc.  

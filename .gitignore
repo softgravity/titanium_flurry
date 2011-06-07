@@ -1,0 +1,7 @@
+.DS_Store
+.classpath
+.project
+.settings
+android/build
+iphone/build
+android/dist/androidflurry.jar

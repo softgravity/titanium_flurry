@@ -1,0 +1,13 @@
+version: 1.0
+description: Flurry for Iphone
+author: Tommy Leung
+license: The MIT License (MIT)
+copyright: Copyright (c) 2011 by Soft Gravity
+
+
+# these should not be edited
+name: iphoneflurry
+moduleid: sg.flurry
+guid: e3264201-9932-4282-bf70-ad7c3b1f0686
+platform: iphone
+minsdk: 1.6.2

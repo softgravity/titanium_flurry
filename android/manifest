@@ -1,0 +1,12 @@
+version: 1.0
+description: Flurry for android
+author: Tommy Leung
+license: The MIT License (MIT)
+copyright: Copyright (c) 2011 by Soft Gravity
+
+# these should not be edited
+name: androidflurry
+moduleid: sg.flurry
+guid: bdbeae58-dcd9-4460-9e18-367f44b2306c
+platform: android
+minsdk: 1.6.2
