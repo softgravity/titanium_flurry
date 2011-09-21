@@ -1,6 +1,11 @@
 Appcelerator iPhone Flurry module
 ============================================
 
+v1.1
+- Flurry Analytics SDK 3.0.0
+- Added secureTransport funcion
+
+
 Blog with more info: http://www.softgravity.com/articles/blog/7-appcelerator-flurry-module-for-iphone-ipad-and-android
 
 Examples in the example directory

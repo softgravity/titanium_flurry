@@ -2,7 +2,7 @@
 
 ## Description
 
-Flurry v2.8.4 for iPhone/iPad. Wrapper to the Flurry SDK for iPhone/iPad. Refer to the Flurry SDK API for more info.
+Flurry v3.0.0 for iPhone/iPad. Wrapper to the Flurry SDK for iPhone/iPad. Refer to the Flurry SDK API for more info.
 
 ## Accessing the iphoneflurry Module
 
@@ -16,15 +16,19 @@ The iphoneflurry variable is a reference to the Module object.
 
 ### sg.flurry.startSession(apiKey)
 
-### sg.flurry.reportOnClose(apiKey)
+### sg.flurry.reportOnClose(bool)
 
 This option is on by default. When enabled, Flurry will attempt to send session data when the app is exited as well as it normally does when the app is started. This will improve the speed at which your application analytics are updated but can prolong the app termination process due to network latency. In some cases, the network latency can cause the app to crash. 
 
-### sg.flurry.reportOnPause(apiKey)
+### sg.flurry.reportOnPause(bool)
 
-This option is on by default. When enabled, Flurry will attempt to send session data when the app is paused as well as it normally does when the app is started. This will improve the speed at which your application analytics are updated but can prolong the app pause process due to network latency. In some cases, the network latency can cause the app to crash. 
+This option is off by default. When enabled, Flurry will attempt to send session data when the app is paused as well as it normally does when the app is started. This will improve the speed at which your application analytics are updated but can prolong the app pause process due to network latency. In some cases, the network latency can cause the app to crash. 
 
-### sg.flurry.logUncaughtExceptions(apiKey)
+### sg.flurry.secureTransport(bool)
+
+This option is off by default. When enabled, Flurry will send session data over SSL when the app is paused as well as it normally does when the app is started. This has the potential to prolong the app pause process due to added network latency from secure handshaking and encryption. 
+
+### sg.flurry.logUncaughtExceptions(bool)
 
 Logs uncaught exceptions thrown in the objective-c code
 
@@ -86,6 +90,7 @@ Add this to your tiapp.xml
 Sample app.js
 
 	var flurry = require('sg.flurry');
+	flurry.secureTransport(true); //use https to send request to make them more safe
 	flurry.logUncaughtExceptions(true); //logs exception in objective-c code
 	flurry.startSession('<< YOUR API KEY HERE >>'); //this only needs to be called once in the entire app
 	flurry.logEvent('started', {start: 'value'});
