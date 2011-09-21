@@ -5,3 +5,5 @@
 android/build
 iphone/build
 android/dist/androidflurry.jar
+iphone/iphoneflurry.xcodeproj/xcuserdata/*
+iphone/iphoneflurry.xcodeproj/project.xcworkspace/xcuserdata/*
