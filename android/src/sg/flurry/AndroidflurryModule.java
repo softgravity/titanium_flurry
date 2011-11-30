@@ -5,7 +5,7 @@
  * This module is Copyright (c) 2011 by Soft Gravity
  * and licensed under The MIT License (MIT)
  */
-package sg.android.flurry;
+package sg.flurry;
 
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollModule;
@@ -13,7 +13,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 
 import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.util.Log;
-import org.appcelerator.titanium.util.TiConfig;
+//import org.appcelerator.titanium.util.TiConfig;
 
 import com.flurry.android.*;
 
@@ -24,7 +24,7 @@ public class AndroidflurryModule extends KrollModule
 
 	// Standard Debugging variables
 	private static final String LCAT = "AndroidflurryModule";
-	private static final boolean DBG = TiConfig.LOGD;
+	//private static final boolean DBG = TiConfig.LOGD;
     
 	@Kroll.constant public static final byte MALE = Constants.MALE;
   	@Kroll.constant public static final byte FEMALE = Constants.FEMALE;
@@ -63,6 +63,12 @@ public class AndroidflurryModule extends KrollModule
     public void setReportLocation(boolean track){      
         FlurryAgent.setReportLocation(track);
    		Log.d(LCAT, "track location: " + track);
+    }
+
+  	@Kroll.method
+    public void setUseHttps(boolean useHttps){
+  		FlurryAgent.setUseHttps(useHttps);
+   		Log.d(LCAT, "setUseHttps: " + useHttps);
     }
     // ********* Settings *************
     
