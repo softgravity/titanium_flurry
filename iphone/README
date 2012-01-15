@@ -1,6 +1,10 @@
 Appcelerator iPhone Flurry module
 ============================================
 
+v2.0
+- Flurry Analytics SDK 3.0.6
+- compiling for Titanium 1.8.0.1 as the way modules work has changed
+
 v1.1
 - Flurry Analytics SDK 3.0.0
 - Added secureTransport funcion

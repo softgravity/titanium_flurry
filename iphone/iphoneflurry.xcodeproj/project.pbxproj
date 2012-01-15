@@ -22,8 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1F0FABF114263276009EF183 /* FlurryAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0FABEF14263276009EF183 /* FlurryAnalytics.h */; };
-		1F0FABF214263276009EF183 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0FABF014263276009EF183 /* libFlurryAnalytics.a */; };
+		1F57CC4914C37241002DFBBC /* FlurryAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F57CC4714C37241002DFBBC /* FlurryAnalytics.h */; };
+		1F57CC4A14C37241002DFBBC /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F57CC4814C37241002DFBBC /* libFlurryAnalytics.a */; };
 		24DD6CF91134B3F500162E58 /* SgFlurryModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* SgFlurryModule.h */; };
 		24DD6CFA1134B3F500162E58 /* SgFlurryModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* SgFlurryModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* SgFlurryModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* SgFlurryModuleAssets.h */; };
@@ -43,10 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F0FABEF14263276009EF183 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
-		1F0FABF014263276009EF183 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		1F0FABF3142634E7009EF183 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = ../../../../../System/Library/Frameworks/CoreLocation.framework; sourceTree = "<group>"; };
 		1F0FABF7142635F8009EF183 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = ../../../../../System/Library/Frameworks/CoreLocation.framework; sourceTree = "<group>"; };
+		1F57CC4714C37241002DFBBC /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
+		1F57CC4814C37241002DFBBC /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		24DD6CF71134B3F500162E58 /* SgFlurryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SgFlurryModule.h; path = Classes/SgFlurryModule.h; sourceTree = "<group>"; };
 		24DD6CF81134B3F500162E58 /* SgFlurryModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SgFlurryModule.m; path = Classes/SgFlurryModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-				1F0FABF214263276009EF183 /* libFlurryAnalytics.a in Frameworks */,
+				1F57CC4A14C37241002DFBBC /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +81,9 @@
 		0867D691FE84028FC02AAC07 /* iphoneflurry */ = {
 			isa = PBXGroup;
 			children = (
+				1F57CC4614C37241002DFBBC /* FlurryAnalytics */,
 				1F0FABF7142635F8009EF183 /* CoreLocation.framework */,
 				1F0FABF3142634E7009EF183 /* CoreLocation.framework */,
-				1F0FABEE14263276009EF183 /* FlurryAnalytics */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -111,11 +111,11 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1F0FABEE14263276009EF183 /* FlurryAnalytics */ = {
+		1F57CC4614C37241002DFBBC /* FlurryAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				1F0FABEF14263276009EF183 /* FlurryAnalytics.h */,
-				1F0FABF014263276009EF183 /* libFlurryAnalytics.a */,
+				1F57CC4714C37241002DFBBC /* FlurryAnalytics.h */,
+				1F57CC4814C37241002DFBBC /* libFlurryAnalytics.a */,
 			);
 			path = FlurryAnalytics;
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 				AA747D9F0F9514B9006C5449 /* SgFlurry_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* SgFlurryModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* SgFlurryModuleAssets.h in Headers */,
-				1F0FABF114263276009EF183 /* FlurryAnalytics.h in Headers */,
+				1F57CC4914C37241002DFBBC /* FlurryAnalytics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
