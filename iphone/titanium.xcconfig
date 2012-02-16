@@ -10,6 +10,8 @@ TITANIUM_SDK_VERSION = 1.8.0.1
 // 
 // THESE SHOULD BE OK GENERALLY AS-IS
 //
+// If you are on Snow Lepord run this command to setup the paths correctly
+// ln -s /Library/Application\ Support/Titanium/mobilesdk ~/Library/Application\ Support/Titanium/mobilesdk
 TITANIUM_SDK = ~/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)
 TITANIUM_BASE_SDK = "$(TITANIUM_SDK)/iphone/include"
 TITANIUM_BASE_SDK2 = "$(TITANIUM_SDK)/iphone/include/TiCore"
