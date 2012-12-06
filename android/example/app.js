@@ -1,6 +1,6 @@
 var flurry = require('sg.flurry');
 flurry.onStartSession('<< YOUR API KEY HERE >>');
-flurry.onEvent('started', {start: 'value'});
+flurry.logEvent('started', {start: 'value'});
 flurry.onError('someerror', 'no crash', 'eClass');
 flurry.setUserID('tester');
 flurry.setAge(10);

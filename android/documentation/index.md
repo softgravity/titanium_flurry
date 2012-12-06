@@ -2,7 +2,7 @@
 
 ## Description
 
-Flurry v2.1 for android. Wrapper to the Flurry SDK for android. Refer to the Flurry SDK API for more info.
+Flurry v3.0.5 for android. Wrapper to the Flurry SDK for android. Refer to the Flurry SDK API for more info.
 
 ## Accessing the androidflurry Module
 
@@ -22,11 +22,11 @@ Must be called for each onStartSession
 
 ### sg.flurry.setContinueSessionMillis(milliseconds)
 
-### sg.flurry.onEvent(eventId, parameters)
+### sg.flurry.logEvent(eventId, parameters)
 
 Paramaters is a hash and is optional
 
-Use onEvent to track user events that happen during a session. You can track how many times each event occurs, what order events happen in, as well as what the most common parameters are for each event.
+Use logEvent to track user events that happen during a session. You can track how many times each event occurs, what order events happen in, as well as what the most common parameters are for each event.
 
 This can be useful for measuring how often users take various actions, or what sequences of actions they usually perform.
 
@@ -71,14 +71,14 @@ Used with the setGender function
 Add this to your tiapp.xml
 
 	<modules>
-		<module version="1.0" platform="android">sg.flurry</module>
+		<module version="1.2" platform="android">sg.flurry</module>
 	</modules>
 
 Sample app.js
 
 	var flurry = require('sg.flurry');
 	flurry.onStartSession('<< YOUR API KEY HERE >>');
-	flurry.onEvent('started', {start: 'value'});
+	flurry.logEvent('started', {start: 'value'});
 	flurry.onError('someerror', 'no crash', 'eClass');
 	flurry.setUserId('tester');
 	flurry.setAge(10);

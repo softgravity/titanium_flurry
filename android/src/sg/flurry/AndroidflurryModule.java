@@ -7,6 +7,9 @@
  */
 package sg.flurry;
 
+import java.util.Map;
+import java.util.HashMap;
+
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
@@ -29,23 +32,26 @@ public class AndroidflurryModule extends KrollModule
 	@Kroll.constant public static final byte MALE = Constants.MALE;
   	@Kroll.constant public static final byte FEMALE = Constants.FEMALE;
     
+    private final TiContext _tiContext;
+    
 	public AndroidflurryModule(TiContext tiContext) {
 		super(tiContext);
+		_tiContext = tiContext;
 	}
 
 	// ********* Sessions *************
     // apiKey is the unique key when for the application on flurry
     @Kroll.method
     public void onStartSession(String apiKey){
-        FlurryAgent.onStartSession(this.context.getAndroidContext() , apiKey);
-		Log.d(LCAT, "start context: " + this.context.getAndroidContext());
+        FlurryAgent.onStartSession(_tiContext.getAndroidContext() , apiKey);
+		Log.d(LCAT, "start context: " + _tiContext.getAndroidContext());
     }
     
     //Must be called if you want events to be sent
   	@Kroll.method
     public void onEndSession(){      
-        FlurryAgent.onEndSession(this.context.getAndroidContext());
-   		Log.d(LCAT, "end context: " + this.context.getAndroidContext());
+        FlurryAgent.onEndSession(_tiContext.getAndroidContext());
+   		Log.d(LCAT, "end context: " + _tiContext.getAndroidContext());
     }
 	// ********* Sessions *************
     
@@ -76,8 +82,17 @@ public class AndroidflurryModule extends KrollModule
     
  	// ********* Events *************
   	@Kroll.method
-    public void onEvent(String eventId, @Kroll.argument(optional=true) KrollDict parameters){      
-        FlurryAgent.onEvent(eventId, parameters);
+    public void logEvent(String eventId, @Kroll.argument(optional=true) KrollDict inparameters){
+    	HashMap<String, String> parameters = inparameters == null ? null : new HashMap<String, String>();
+    	if (inparameters != null){
+			for (Map.Entry<String, Object> entry : inparameters.entrySet()) {
+				Object value = entry.getValue();
+				
+				parameters.put(entry.getKey(), value == null ? null : value.toString());
+			}
+    	}
+    	
+        FlurryAgent.logEvent(eventId, parameters);
 		Log.d(LCAT, "logged event: " + eventId + " " + parameters);
     }
     
@@ -112,8 +127,8 @@ public class AndroidflurryModule extends KrollModule
     
     //Use the constants AndroidflurryModule.MALE or AndroidflurryModule.FEMALE in your javascript files
     @Kroll.method
-    public void setGender(byte gender){
-        FlurryAgent.setGender(gender);
+    public void setGender(int gender){
+        FlurryAgent.setGender((byte)gender);
         Log.d(LCAT, "logged gender: " + gender);
     }
     // ********* Demographics *************
