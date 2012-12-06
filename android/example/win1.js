@@ -9,7 +9,7 @@ var label1 = Titanium.UI.createLabel({
 
 label1.addEventListener('click', function(){
   flurry.onStartSession('<< YOUR API KEY HERE >>');
-  flurry.onEvent('started2', {start: 'value'});
+  flurry.logEvent('started2', {start: 'value'});
   flurry.onError('someerror2', 'no crash', 'eClass');
   flurry.setUserID('tester');
   flurry.setAge(20);
