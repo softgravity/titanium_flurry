@@ -76,6 +76,12 @@ public class AndroidflurryModule extends KrollModule
   		FlurryAgent.setUseHttps(useHttps);
    		Log.d(LCAT, "setUseHttps: " + useHttps);
     }
+  	
+  	@Kroll.method
+    public void setCaptureUncaughtExceptions(boolean uncaught){
+  		FlurryAgent.setCaptureUncaughtExceptions(uncaught);
+   		Log.d(LCAT, "setUseHttps: " + uncaught);
+    }
     // ********* Settings *************
     
     

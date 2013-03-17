@@ -1,4 +1,8 @@
 var flurry = require('sg.flurry');
+flurry.setContinueSessionMillis(10000);
+flurry.setReportLocation(true);
+flurry.setUseHttps(true);
+flurry.setCaptureUncaughtExceptions(true);
 flurry.onStartSession('<< YOUR API KEY HERE >>');
 flurry.logEvent('started', {start: 'value'});
 flurry.onError('someerror', 'no crash', 'eClass');
