@@ -103,6 +103,14 @@ void uncaughtExceptionHandler(NSException *exception) {
         NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     }
 }
+
+//value is true or false
+-(void)crashReportingEnabled:(id)value
+{
+	ENSURE_SINGLE_ARG(value,NSObject);
+	BOOL yn = [TiUtils boolValue:value];
+	[Flurry setCrashReportingEnabled:yn];
+}
 // ************** Settings ****************
 
 

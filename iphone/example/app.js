@@ -1,6 +1,7 @@
 var flurry = require('sg.flurry');
 flurry.secureTransport(true); //use https to send request to make them more safe
 flurry.logUncaughtExceptions(true); //logs exception in objective-c code
+flurry.crashReportingEnabled(true); //enable crash reporting
 flurry.startSession('<< YOUR API KEY HERE >>'); //this only needs to be called once in the entire app
 flurry.logEvent('started', {start: 'value'});
 flurry.logTimedEvent('start timed', {start: 'timer'});
