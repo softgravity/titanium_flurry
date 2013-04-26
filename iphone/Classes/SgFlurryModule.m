@@ -9,7 +9,7 @@
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 @implementation SgFlurryModule
 
@@ -49,7 +49,7 @@
 -(void)startSession:(id)args
 {
 	ENSURE_SINGLE_ARG(args,NSString);
-	[FlurryAnalytics startSession:args];
+	[Flurry startSession:args];
 }
 
 //Constant for the setGender function
@@ -64,7 +64,7 @@
 
 //For catching native uncaught exceptions
 void uncaughtExceptionHandler(NSException *exception) {
-    [FlurryAnalytics logError:@"Uncaught" message:@"uncaught objective-c exception" exception:exception];
+    [Flurry logError:@"Uncaught" message:@"uncaught objective-c exception" exception:exception];
     
    	NSLog(@"[INFO] SgFlurry logged %s: %@", @"Uncaught error", exception);
 }
@@ -75,7 +75,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
 	ENSURE_SINGLE_ARG(value,NSObject);
 	BOOL yn = [TiUtils boolValue:value];
-	[FlurryAnalytics setSessionReportsOnCloseEnabled:yn];
+	[Flurry setSessionReportsOnCloseEnabled:yn];
 }
 
 //value is true or false
@@ -83,7 +83,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
 	ENSURE_SINGLE_ARG(value,NSObject);
 	BOOL yn = [TiUtils boolValue:value];
-	[FlurryAnalytics setSessionReportsOnPauseEnabled:yn];
+	[Flurry setSessionReportsOnPauseEnabled:yn];
 }
 
 //value is true or false
@@ -91,7 +91,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
 	ENSURE_SINGLE_ARG(value,NSObject);
 	BOOL yn = [TiUtils boolValue:value];
-	[FlurryAnalytics setSecureTransportEnabled:yn];
+	[Flurry setSecureTransportEnabled:yn];
 }
 
 //value is true or false
@@ -120,11 +120,11 @@ void uncaughtExceptionHandler(NSException *exception) {
 	}
 	if (props==nil)
 	{
-		[FlurryAnalytics logEvent:event];
+		[Flurry logEvent:event];
 	}
 	else 
 	{
-		[FlurryAnalytics logEvent:event withParameters:props];
+		[Flurry logEvent:event withParameters:props];
 	}
     
    	NSLog(@"[INFO] SgFlurry logged %@: %@ | %@", @"Event", event, props);
@@ -143,11 +143,11 @@ void uncaughtExceptionHandler(NSException *exception) {
 	}
 	if (props==nil)
 	{
-		[FlurryAnalytics logEvent:event timed:YES];
+		[Flurry logEvent:event timed:YES];
 	}
 	else 
 	{
-		[FlurryAnalytics logEvent:event withParameters:props timed:YES];
+		[Flurry logEvent:event withParameters:props timed:YES];
 	}
     
    	NSLog(@"[INFO] SgFlurry logged %@: %@ | %@", @"Timed Event", event, props);
@@ -165,14 +165,14 @@ void uncaughtExceptionHandler(NSException *exception) {
 	}
     
     //nil props is ok because flurry will just ignore the parameter
-	[FlurryAnalytics endTimedEvent:event withParameters:props];
+	[Flurry endTimedEvent:event withParameters:props];
     
    	NSLog(@"[INFO] SgFlurry logged %@: %@ | %@", @"Timed Event End", event, props);
 }
 
 -(void)logPageView:(id)args
 {
-	[FlurryAnalytics logPageView];
+	[Flurry logPageView];
     
    	NSLog(@"[INFO] SgFlurry logged %@", @"Page View");
 }
@@ -186,7 +186,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 		NSString *name = [TiUtils stringValue:[args objectAtIndex:0] ];
         NSString *message = [TiUtils stringValue:[args objectAtIndex:1] ];
         NSException *excep = [NSException exceptionWithName:@"Titanium thrown error" reason:@"" userInfo:nil];
-        [FlurryAnalytics logError:name message:message exception:excep];
+        [Flurry logError:name message:message exception:excep];
         
        	NSLog(@"[INFO] SgFlurry logged %@: %@ | %@", @"Error", name, message);
 	}
@@ -199,7 +199,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 -(void)setUserID:(id)value
 {
 	ENSURE_SINGLE_ARG(value,NSString);
-	[FlurryAnalytics setUserID:value];
+	[Flurry setUserID:value];
     
    	NSLog(@"[INFO] SgFlurry logged %@: %@", @"userID", value);
 }
@@ -208,7 +208,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 -(void)setAge:(id)value
 {
 	NSInteger f = [TiUtils intValue:value];
-	[FlurryAnalytics setAge:f];
+	[Flurry setAge:f];
     
    	NSLog(@"[INFO] SgFlurry logged %@: %d", @"age", f);
 }
@@ -217,7 +217,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 -(void)setGender:(id)value
 {
 	ENSURE_SINGLE_ARG(value,NSString);
-	[FlurryAnalytics setGender:value];
+	[Flurry setGender:value];
     
    	NSLog(@"[INFO] SgFlurry logged %@: %@", @"gender", value);
 }
@@ -234,7 +234,7 @@ void uncaughtExceptionHandler(NSException *exception) {
    		CGFloat lon = [TiUtils floatValue:[args objectAtIndex:1] ];
    		CGFloat horz = [TiUtils floatValue:[args objectAtIndex:2] ]; //in meters
    		CGFloat vert = [TiUtils floatValue:[args objectAtIndex:3] ]; //in meters
-        [FlurryAnalytics setLatitude:lat longitude:lon horizontalAccuracy:horz verticalAccuracy:vert];
+        [Flurry setLatitude:lat longitude:lon horizontalAccuracy:horz verticalAccuracy:vert];
         
         NSLog(@"[INFO] SgFlurry logged %@: %f | %f | %f | %f", @"lat", lat, lon, horz, vert);
 	}

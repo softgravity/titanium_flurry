@@ -22,8 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1F57CC4914C37241002DFBBC /* FlurryAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F57CC4714C37241002DFBBC /* FlurryAnalytics.h */; };
-		1F57CC4A14C37241002DFBBC /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F57CC4814C37241002DFBBC /* libFlurryAnalytics.a */; };
+		1F575A73171C9122002A4915 /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F575A71171C9122002A4915 /* Flurry.h */; };
+		1F575A74171C9122002A4915 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F575A72171C9122002A4915 /* libFlurry.a */; };
 		24DD6CF91134B3F500162E58 /* SgFlurryModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* SgFlurryModule.h */; };
 		24DD6CFA1134B3F500162E58 /* SgFlurryModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* SgFlurryModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* SgFlurryModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* SgFlurryModuleAssets.h */; };
@@ -45,8 +45,8 @@
 /* Begin PBXFileReference section */
 		1F0FABF3142634E7009EF183 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = ../../../../../System/Library/Frameworks/CoreLocation.framework; sourceTree = "<group>"; };
 		1F0FABF7142635F8009EF183 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = ../../../../../System/Library/Frameworks/CoreLocation.framework; sourceTree = "<group>"; };
-		1F57CC4714C37241002DFBBC /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
-		1F57CC4814C37241002DFBBC /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
+		1F575A71171C9122002A4915 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		1F575A72171C9122002A4915 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		24DD6CF71134B3F500162E58 /* SgFlurryModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SgFlurryModule.h; path = Classes/SgFlurryModule.h; sourceTree = "<group>"; };
 		24DD6CF81134B3F500162E58 /* SgFlurryModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SgFlurryModule.m; path = Classes/SgFlurryModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
-				1F57CC4A14C37241002DFBBC /* libFlurryAnalytics.a in Frameworks */,
+				1F575A74171C9122002A4915 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,7 @@
 		0867D691FE84028FC02AAC07 /* iphoneflurry */ = {
 			isa = PBXGroup;
 			children = (
-				1F57CC4614C37241002DFBBC /* FlurryAnalytics */,
+				1F575A70171C9122002A4915 /* Flurry */,
 				1F0FABF7142635F8009EF183 /* CoreLocation.framework */,
 				1F0FABF3142634E7009EF183 /* CoreLocation.framework */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
@@ -111,13 +111,13 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1F57CC4614C37241002DFBBC /* FlurryAnalytics */ = {
+		1F575A70171C9122002A4915 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				1F57CC4714C37241002DFBBC /* FlurryAnalytics.h */,
-				1F57CC4814C37241002DFBBC /* libFlurryAnalytics.a */,
+				1F575A71171C9122002A4915 /* Flurry.h */,
+				1F575A72171C9122002A4915 /* libFlurry.a */,
 			);
-			path = FlurryAnalytics;
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
@@ -139,7 +139,7 @@
 				AA747D9F0F9514B9006C5449 /* SgFlurry_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* SgFlurryModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* SgFlurryModuleAssets.h in Headers */,
-				1F57CC4914C37241002DFBBC /* FlurryAnalytics.h in Headers */,
+				1F575A73171C9122002A4915 /* Flurry.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +253,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/Flurry\"",
 				);
 				PRODUCT_NAME = SgFlurry;
 				SDKROOT = iphoneos;
@@ -280,6 +281,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/Flurry\"",
 				);
 				PRODUCT_NAME = SgFlurry;
 				SDKROOT = iphoneos;
