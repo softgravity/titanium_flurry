@@ -28,6 +28,8 @@
 		24DD6CFA1134B3F500162E58 /* SgFlurryModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* SgFlurryModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* SgFlurryModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* SgFlurryModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* SgFlurryModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* SgFlurryModuleAssets.m */; };
+		5577601C17CCBCE100CA09BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577601B17CCBCE100CA09BF /* Security.framework */; };
+		5577601E17CCBCED00CA09BF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577601D17CCBCED00CA09BF /* AdSupport.framework */; };
 		AA747D9F0F9514B9006C5449 /* SgFlurry_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* SgFlurry_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* SgFlurryModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SgFlurryModuleAssets.h; path = Classes/SgFlurryModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* SgFlurryModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SgFlurryModuleAssets.m; path = Classes/SgFlurryModuleAssets.m; sourceTree = "<group>"; };
+		5577601B17CCBCE100CA09BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5577601D17CCBCED00CA09BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA747D9E0F9514B9006C5449 /* SgFlurry_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgFlurry_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libSgFlurry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSgFlurry.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5577601E17CCBCED00CA09BF /* AdSupport.framework in Frameworks */,
+				5577601C17CCBCE100CA09BF /* Security.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				1F575A74171C9122002A4915 /* libFlurry.a in Frameworks */,
 			);
@@ -81,6 +87,8 @@
 		0867D691FE84028FC02AAC07 /* iphoneflurry */ = {
 			isa = PBXGroup;
 			children = (
+				5577601D17CCBCED00CA09BF /* AdSupport.framework */,
+				5577601B17CCBCE100CA09BF /* Security.framework */,
 				1F575A70171C9122002A4915 /* Flurry */,
 				1F0FABF7142635F8009EF183 /* CoreLocation.framework */,
 				1F0FABF3142634E7009EF183 /* CoreLocation.framework */,
