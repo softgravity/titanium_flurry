@@ -19,20 +19,20 @@
  *  For information on how to use Flurry's Ads SDK to
  *  attract high-quality users and monetize your user base see <a href="http://support.flurry.com/index.php?title=Publishers">Support Center - Publishers</a>.
  *  
- *  @author 2009 - 2012 Flurry, Inc. All Rights Reserved.
- *  @version 4.2.0
+ *  @author 2009 - 2013 Flurry, Inc. All Rights Reserved.
+ *  @version 4.3.0
  * 
  */
 
 /*!
  *  @brief Enum for setting up log output level.
- *  @since 4.2.2
+ *  @since 4.2.0
  *
  */
 typedef enum {
     FlurryLogLevelNone = 0,         //No output
-    FlurryLogLevelCriticalOnly,     //Default, outputs only crytical log events
-    FlurryLogLevelDebug,            //Debug level, outputs crytical and main log events
+    FlurryLogLevelCriticalOnly,     //Default, outputs only critical log events
+    FlurryLogLevelDebug,            //Debug level, outputs critical and main log events
     FlurryLogLevelAll               //Highest level, outputs all log events
 } FlurryLogLevel;
 
@@ -235,15 +235,12 @@ typedef enum {
 
 
 /*!
- *  @brief Pauses a Flurry session.
+ *  @brief Pauses a Flurry session left running in background.
  *  @since 4.2.2
  *
- *  This method is useful in case of #setBackgroundSessionEnabled: set to YES. It can be
+ *  This method should be used in case of #setBackgroundSessionEnabled: set to YES. It can be
  *  called when application finished all background tasks (such as playing music) to pause session.
- *  If the app is resumed before time specified in #setSessionContinueSeconds:,
- *  the session will continue, otherwise a new session will begin.
  *
- * @see #setSessionContinueSeconds: for details on setting a custom session timeout.
  * @see #setBackgroundSessionEnabled: for details on setting a custom behaviour on resigning activity.
  *
  * @code
@@ -258,6 +255,61 @@ typedef enum {
  */
 + (void)pauseBackgroundSession;
 
+/*!
+ *  @brief Adds an SDK origin specified by @c originName and @c originVersion.
+ *  @since 5.0.0
+ *
+ *  This method allows you to specify origin within your Flurry SDK wrapper. As a general rule
+ *  you should capture all the origin info related to your wrapper for Flurry SDK after every session start.
+ *
+ *  @see #addOrigin:withVersion:withParameters: for details on reporting origin info with parameters. \n
+ *
+ *  @code
+ *  - (void)interestingSDKWrapperLibraryfunction
+ {
+     // ... after calling startSession
+     [Flurry addOrigin:@"Interesting_Wrapper" withVersion:@"1.0.0"];
+     // more code ...
+ }
+ *  @endcode
+ *
+ *  @param originName    Name of the origin.
+ *  @param originVersion Version string of the origin wrapper
+ */
++ (void)addOrigin:(NSString *)originName withVersion:(NSString*)originVersion;
+
+/*!
+ *  @brief Adds a custom parameterized origin specified by @c originName with @c originVersion and @c parameters.
+ *  @since 5.0.0
+ *
+ *  This method overrides #addOrigin to allow you to associate parameters with an origin attribute. Parameters
+ *  are valuable as they allow you to store characteristics of an origin.
+ *
+ *  @note You should not pass private or confidential information about your origin info in a
+ *  custom origin. \n
+ *  A maximum of 9 parameter names may be associated with any origin. Sending
+ *  over 10 parameter names with a single origin will result in no parameters being logged
+ *  for that origin.
+ *
+ *
+ *  @code
+ *  - (void)userPurchasedSomethingCool
+ {
+ NSDictionary *params =
+    [NSDictionary dictionaryWithObjectsAndKeys:@"Origin Info Item", // Parameter Value
+        @"Origin Info Item Key", // Parameter Name
+        nil];
+    // ... after calling startSession
+    [Flurry addOrigin:@"Interesting_Wrapper" withVersion:@"1.0.0"];
+    // more code ...
+ }
+ *  @endcode
+ *
+ *  @param originName    Name of the origin.
+ *  @param originVersion Version string of the origin wrapper
+ *  @param parameters An immutable copy of map containing Name-Value pairs of parameters.
+ */
++ (void)addOrigin:(NSString *)originName withVersion:(NSString*)originVersion withParameters:(NSDictionary *)parameters;
 
 /** @name Event and Error Logging
  *  Methods for reporting custom events and errors during the session. 
@@ -340,7 +392,7 @@ typedef enum {
  * 
  *  @param eventName Name of the event. For maximum effectiveness, we recommend using a naming scheme
  *  that can be easily understood by non-technical people in your business domain.
- *  @param parameters A map containing Name-Value pairs of parameters.
+ *  @param parameters An immutable copy of map containing Name-Value pairs of parameters.
  */
 + (void)logEvent:(NSString *)eventName withParameters:(NSDictionary *)parameters;
 
@@ -476,7 +528,7 @@ typedef enum {
  * 
  *  @param eventName Name of the event. For maximum effectiveness, we recommend using a naming scheme
  *  that can be easily understood by non-technical people in your business domain.
- *  @param parameters A map containing Name-Value pairs of parameters.
+ *  @param parameters An immutable copy of map containing Name-Value pairs of parameters.
  *  @param timed Specifies the event will be timed.
  */
 + (void)logEvent:(NSString *)eventName withParameters:(NSDictionary *)parameters timed:(BOOL)timed;
@@ -524,7 +576,7 @@ typedef enum {
  * 
  *  @param eventName Name of the event. For maximum effectiveness, we recommend using a naming scheme
  *  that can be easily understood by non-technical people in your business domain.
- *  @param parameters A map containing Name-Value pairs of parameters.
+ *  @param parameters An immutable copy of map containing Name-Value pairs of parameters.
  */
 + (void)endTimedEvent:(NSString *)eventName withParameters:(NSDictionary *)parameters;	// non-nil parameters will update the parameters
 
@@ -537,29 +589,54 @@ typedef enum {
 //@{
 
 /*!
- *  @brief Automatically track page views on a @c UINavigationController or @c UITabBarController.
+ *  @deprecated
+ *  @brief see +(void)logAllPageViewsForTarget:(id)target; for details
  *  @since 2.7
+ *  This method does the same as +(void)logAllPageViewsForTarget:(id)target method and is left for backward compatibility
+ */
++ (void)logAllPageViews:(id)target __attribute__ ((deprecated));		
+/*!
+ *  @brief Automatically track page views on a @c UINavigationController or @c UITabBarController.
+ *  @since 4.3
  * 
  *  This method increments the page view count for a session based on traversing a UINavigationController
  *  or UITabBarController. The page view count is only a counter for the number of transitions in your
  *  app. It does not associate a name with the page count. To associate a name with a count of occurences
  *  see #logEvent:.
  * 
- *  @note Please make sure you assign the Tab and Navigation controllers to the view controllers before
- *  passing them to this method.
+ *  @note If you need to release passed target, you should call counterpart method + (void)stopLogPageViewsForTarget:(id)target before;
  *
  *  @see #logPageView for details on explictly incrementing page view count.
  *
  *  @code
  * -(void) trackViewsFromTabBar:(UITabBarController*) tabBar 
  {
- [Flurry logAllPageViews:tabBar];
+ [Flurry logAllPageViewsForTarget:tabBar];
  }
  *  @endcode
  * 
  *  @param target The navigation or tab bar controller.
  */
-+ (void)logAllPageViews:(id)target;		
++ (void)logAllPageViewsForTarget:(id)target;
+
+/*!
+ *  @brief Stops logging page views on previously observed with logAllPageViewsForTarget: @c UINavigationController or @c UITabBarController.
+ *  @since 4.3
+ * 
+ *  Call this method before instance of @c UINavigationController or @c UITabBarController observed with logAllPageViewsForTarget: is released.
+ *
+ *  @code
+ * -(void) dealloc
+ {
+ [Flurry stopLogPageViewsForTarget:_tabBarController];
+ [_tabBarController release];
+ [super dealloc];
+ }
+ *  @endcode
+ * 
+ *  @param target The navigation or tab bar controller.
+ */
++ (void)stopLogPageViewsForTarget:(id)target;
 
 /*!
  *  @brief Explicitly track a page view during a session.
@@ -709,11 +786,17 @@ typedef enum {
  *  @brief Set session to support background execution.
  *  @since 4.2.2
  *
- *  Use this method finish session data when the app is paused. The default value is taken looking at the UIBackgroundModes of application's Info.plist.
- *  If UIBackgroundModes array is empty, equals @c NO, otherwise @c YES.
+ *  Use this method to enable reporting of errors and events when application is 
+ *  running in backgorund (such applications have  UIBackgroundModes in Info.plist).
+ *  You should call #pauseBackgroundSession when appropriate in background mode to 
+ *  pause the session (for example when played song completed in background)
  *
- *  @param setBackgroundSessionEnabled NO to finish on resigning active, YES to omit finishing.
+ *  Default value is @c NO
  *
+ *  @see #pauseBackgroundSession for details
+ *
+ *  @param setBackgroundSessionEnabled YES to enbale background support and 
+ *  continue log events and errors for running session.
  */
 + (void)setBackgroundSessionEnabled:(BOOL)setBackgroundSessionEnabled;
 
@@ -728,15 +811,6 @@ typedef enum {
  */
 + (void)setEventLoggingEnabled:(BOOL)value;
 
-/*!
- *  @brief Set device push token.
- *  @since 2.7
- *
- *  After the device has successfully registered with APNS, call this method to set the push token received from APNS.
- *
- *
- */
-+ (void)setPushToken:(NSString *)pushToken;
 
 
 //@}

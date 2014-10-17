@@ -1,6 +1,12 @@
 Appcelerator iPhone Flurry module
 ============================================
 
+v2.7
+- Flurry Analytics SDK 5.4.0
+
+v2.6
+- Flurry Analytics SDK 4.2.3
+
 v2.4
 - Flurry Analytics SDK 4.1.0
 
@@ -24,7 +30,7 @@ Blog with more info: http://www.softgravity.com/articles/blog/7-appcelerator-flu
 Examples in the example directory
 API reference in the documentation directory
 
-The module is already compiled. Extract the sg.flurry-iphone-1.0.zip file.
+The module is already compiled. Extract the sg.flurry-iphone-2.7.zip file.
 
 
 This module is Copyright (c) 2013 by Soft Gravity. All Rights Reserved. The MIT License (MIT)
